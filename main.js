@@ -15,7 +15,7 @@ display.value = 0;
 const add = document.querySelector("#add").addEventListener("click", (e) => {
   e.preventDefault;
   memory.operationType = 'addition';
-  memory.calcArr.push(memory.numbers[0]);
+  memory.calcArr.push(memory.numbers);
   memory.numbers = [];
   display.value = '0';
 
@@ -28,16 +28,27 @@ const subtract = document.querySelector("#sub").addEventListener("click", (e) =>
   display.value = '0';
 
 });
-const multiply = document.querySelector("#mult").addEventListener("click", (e) => { e.preventDefault; memory.operationType = 'multiplication' });
-const divide = document.querySelector("#divide").addEventListener("click", (e) => { e.preventDefault; memory.operationType = 'division' });
+const multiply = document.querySelector("#mult").addEventListener("click", (e) => {
+  e.preventDefault;
+  memory.operationType = 'multiplication';
+  memory.calcArr.push(memory.numbers[0]);
+  memory.numbers = [];
+  display.value = '0';
+});
+const divide = document.querySelector("#divide").addEventListener("click", (e) => {
+  e.preventDefault;
+  memory.operationType = 'division';
+  memory.calcArr.push(memory.numbers[0]);
+  memory.numbers = [];
+  display.value = '0';
+});
 const equal = document.querySelector("#equals").addEventListener("click", (e) => {
   e.preventDefault;
-  getResult()
+  getResult();
 });
 const point = document.querySelector('#point').addEventListener('click', (e) => {
   e.preventDefault;
-  if (display.value !== '0');
-  display.value += '.';
+  if (display.value !== '0') display.value += '.';
   memory.numbers.push('.');
   memory.result += memory.calcArr.reduce((acc, curr) => acc + curr);
 })
@@ -69,11 +80,14 @@ const numInputBtns = document.querySelectorAll('.btn-num').forEach(btn => {
 });
 
 function getResult() {
-  let result;
+  let result = 0;
   switch (memory.operationType) {
     case 'addition':
       memory.calcArr.push(memory.numbers);
-      result = parseFloat(memory.calcArr[0]) + parseFloat(memory.calcArr[1]);
+      //result = parseFloat(memory.calcArr[0]) + parseFloat(memory.calcArr[1]);
+      for (let i = 0; i < memory.calcArr.length; i++) {
+        result += parseFloat(memory.calcArr[i]);
+      }
       memory.numbers = [];
       console.log(memory.calcArr)
       memory.numbers.push(result)
@@ -84,7 +98,9 @@ function getResult() {
       break;
     case 'subtraction':
       memory.calcArr.push(memory.numbers);
-      result = parseFloat(memory.calcArr[0]) - parseFloat(memory.calcArr[1]);
+      for (let i = 0; i < memory.calcArr.length; i++) {
+        result -= parseFloat(memory.calcArr[i]);
+      }
       memory.numbers = [];
       console.log(memory.calcArr)
       memory.numbers.push(result)
@@ -94,8 +110,30 @@ function getResult() {
       console.log(result);
       break;
     case 'multiplication':
+      memory.calcArr.push(memory.numbers);
+      for (let i = 0; i < memory.calcArr.length; i++) {
+        result *= parseFloat(memory.calcArr[i]);
+      }
+      memory.numbers = [];
+      console.log(memory.calcArr)
+      memory.numbers.push(result)
+      memory.calcArr = [];
+      display.value = result;
+      console.log(`Numbers: ${memory.numbers} CalcArr: ${memory.calcArr}| OpType: ${memory.operationType}`)
+      console.log(result);
       break;
     case 'division':
+      memory.calcArr.push(memory.numbers);
+      for (let i = 0; i < memory.calcArr.length; i++) {
+        result /= parseFloat(memory.calcArr[i]);
+      }
+      memory.numbers = [];
+      console.log(memory.calcArr)
+      memory.numbers.push(result)
+      memory.calcArr = [];
+      display.value = result;
+      console.log(`Numbers: ${memory.numbers} CalcArr: ${memory.calcArr}| OpType: ${memory.operationType}`)
+      console.log(result);
       break;
   }
 }
