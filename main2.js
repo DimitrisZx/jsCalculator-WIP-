@@ -18,7 +18,7 @@ class Events {
     }
     static addOperation(type) {
         let sign;
-        if ($input.value !== '') {
+        if ($input.value !== '' && ($input.value.charAt($input.value.length - 2) !== '+' && $input.value.charAt($input.value.length - 2) !== '-' && $input.value.charAt($input.value.length - 2) !== 'x' && $input.value.charAt($input.value.length - 2) !== '/')) {
             switch (type) {
                 case 'add':
                     sign = ' + ';
