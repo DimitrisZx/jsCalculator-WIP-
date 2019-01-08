@@ -43,6 +43,11 @@ class Events {
             $input.value = newInput + sign;
         }
     }
+    static equals() {
+        console.log($input.value)
+        let newInput = $input.value.replace(/\s/g, '');
+        console.log(newInput);
+    }
 }
 
 const memory = {
@@ -50,7 +55,7 @@ const memory = {
 };
 
 const $input = document.getElementById('input');
-const $equalsBtn = document.getElementById('equals');
+const $equalsBtn = document.getElementById('equals').addEventListener('click', e => { e.preventDefault; Events.equals() });
 const $clearBtn = document.getElementById('clear').addEventListener('click', Events.clearInput);
 const $pointBtn = document.getElementById('point').addEventListener('click', Events.addPoint);
 const $logMem = document.getElementById('logMem').addEventListener('click', Events.logMemory);
