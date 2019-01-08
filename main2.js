@@ -1,5 +1,6 @@
 class Events {
     static inputNum(e) {
+        if ($input.value === '0') $input.value = '';
         e.preventDefault;
         $input.value += e.target.textContent;
     }
@@ -68,3 +69,7 @@ const $divBtn = document.getElementById('divide').addEventListener('click', e =>
 const $numBtns = document.querySelectorAll('.btn-num').forEach(btn => {
     btn.addEventListener('click', Events.inputNum);
 })
+
+
+// To do:
+// stop equals from functioning if the input does not end in a number e.g: "23 + 3 - "
