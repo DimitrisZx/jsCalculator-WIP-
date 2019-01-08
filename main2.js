@@ -18,28 +18,35 @@ class Events {
     }
     static addOperation(type) {
         let sign;
-        if ($input.value !== '' && ($input.value.charAt($input.value.length - 2) !== '+' && $input.value.charAt($input.value.length - 2) !== '-' && $input.value.charAt($input.value.length - 2) !== 'x' && $input.value.charAt($input.value.length - 2) !== '/')) {
-            switch (type) {
-                case 'add':
-                    sign = ' + ';
-                    break;
-                case 'sub':
-                    sign = ' - ';
-                    break;
-                case 'mul':
-                    sign = ' x ';
-                    break;
-                case 'div':
-                    sign = ' / ';
-                    break;
-            }
+        const arr = ['+', '-', 'x', '/'];
+        switch (type) {
+            case 'add':
+                sign = ' + ';
+                break;
+            case 'sub':
+                sign = ' - ';
+                break;
+            case 'mul':
+                sign = ' x ';
+                break;
+            case 'div':
+                sign = ' / ';
+                break;
+        }
+        // Add the operation sign if none present, else change the already existing
+        if ($input.value !== '' && !(arr.includes($input.value.charAt($input.value.length - 2)))) {
             $input.value += sign;
+
+        } else if ((arr.includes($input.value.charAt($input.value.length - 2)))) {
+            const newInput = $input.value.slice(0, $input.value.length - 3);
+            console.log(newInput)
+            $input.value = newInput + sign;
         }
     }
 }
 
 const memory = {
-    operations: ''
+    operations: '',
 };
 
 const $input = document.getElementById('input');
