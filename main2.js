@@ -45,9 +45,13 @@ class Events {
         }
     }
     static equals() {
-        console.log($input.value)
         let newInput = $input.value.replace(/\s/g, '');
-        console.log(newInput);
+        if (!isNaN(parseFloat($input.value.charAt($input.value.length - 1)))) {
+            console.log($input.value)
+
+            console.log(newInput);
+
+        }
     }
 }
 
@@ -72,4 +76,4 @@ const $numBtns = document.querySelectorAll('.btn-num').forEach(btn => {
 
 
 // To do:
-// stop equals from functioning if the input does not end in a number e.g: "23 + 3 - "
+// stop equals from functioning if the input does not end in a number e.g: "23 + 3 - " DONE
