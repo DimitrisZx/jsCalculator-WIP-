@@ -7,6 +7,7 @@ class Events {
     static clearInput(e) {
         e.preventDefault;
         $input.value = '0';
+        $output.value = '0';
         memory.operations = '0';
     }
     static addPoint(e) {
@@ -28,11 +29,16 @@ class Events {
                 sign = ' - ';
                 break;
             case 'mul':
-                sign = ' x ';
+                sign = ' * ';
                 break;
             case 'div':
                 sign = ' / ';
                 break;
+        }
+
+        if (parseFloat($output.value) !== 0) {
+            $input.value = $output.value;
+            $output.value = 0;
         }
         // Add the operation sign if none present, else change the already existing
         if ($input.value !== '' && !(arr.includes($input.value.charAt($input.value.length - 2)))) {
@@ -45,13 +51,17 @@ class Events {
         }
     }
     static equals() {
-        let newInput = $input.value.replace(/\s/g, '');
-        if (!isNaN(parseFloat($input.value.charAt($input.value.length - 1)))) {
-            console.log($input.value)
+        const expression = $input.value;
+        if (!isNaN($input.value.charAt($input.value.length - 1))) {
 
-            console.log(newInput);
-
+            const result = math.eval(expression);
+            $output.value = result;
         }
+
+    }
+    static changeSign() {
+        // Implement change sign
+        console.log('WIP');
     }
 }
 
@@ -60,10 +70,13 @@ const memory = {
 };
 
 const $input = document.getElementById('input');
+const $output = document.getElementById('output');
+$input.value = $output.value = 0;
 const $equalsBtn = document.getElementById('equals').addEventListener('click', e => { e.preventDefault; Events.equals() });
 const $clearBtn = document.getElementById('clear').addEventListener('click', Events.clearInput);
 const $pointBtn = document.getElementById('point').addEventListener('click', Events.addPoint);
-const $logMem = document.getElementById('logMem').addEventListener('click', Events.logMemory);
+// const $logMem = document.getElementById('logMem').addEventListener('click', Events.logMemory);
+const $negPos = document.getElementById('negPos').addEventListener('click', Events.changeSign);
 
 const $addBtn = document.getElementById('add').addEventListener('click', e => { e.preventDefault; Events.addOperation('add') });
 const $subBtn = document.getElementById('sub').addEventListener('click', e => { e.preventDefault; Events.addOperation('sub') });

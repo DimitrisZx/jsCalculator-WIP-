@@ -6,44 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="./styles.css" />
+  <script src="./mathjs-expression-parser/mathjs-expression-parser.min.js"></script>
   <title>Document</title>
 </head>
 
 <body>
   <div id="calc-container">
     <div id="calc-display"><input id='input' type="text" placeholder="0" /></div>
-    <div id="button-grid">
-      <div>
-        <button id="1" class="btn btn-num">1</button>
-        <button id="2" class="btn btn-num">2</button>
-        <button id="3" class="btn btn-num">3</button>
-        <button id="add" class="btn btn-func">+</button>
-      </div>
-      <div>
-        <button id="4" class="btn btn-num">4</button>
-        <button id="5" class="btn btn-num">5</button>
-        <button id="6" class="btn btn-num">6</button>
-        <button id="sub" class="btn btn-func">-</button>
-      </div>
-      <div>
-        <button id="7" class="btn btn-num">7</button>
-        <button id="8" class="btn btn-num">8</button>
-        <button id="9" class="btn btn-num">9</button>
-        <button id="mult" class="btn btn-func">x</button>
-      </div>
-      <div>
-        <button id="equals" class="btn btn-func">=</button>
-        <button id="0" class="btn btn-num">0</button>
-        <button id="clear" class="btn btn-func">C</button>
-        <button id="divide" class="btn  btn-func">/</button>
-      </div>
-      <div>
-        <button id="point" class="btn btn-func">.</button>
-        <button id="logMem" class="btn btn-func">Log Mem</button>
+    <div id="calc-display-main"><input id='output' type="text" placeholder="0" /></div>
+    <div id="button-grid" class='grid-container'>
 
-      </div>
+      <button id="clear" class="btn btn-func">C</button>
+      <button id="point" class="btn btn-func">.</button>
+      <button id="negPos" class="btn btn-func">+/-</button>
+      <button id="del" class="btn btn-func">d</button>
+
+      <button id="seven" class="btn btn-num">7</button>
+      <button id="eight" class="btn btn-num">8</button>
+      <button id="nine" class="btn btn-num">9</button>
+      <button id="add" class="btn btn-func">+</button>
+
+      <button id="four" class="btn btn-num">4</button>
+      <button id="five" class="btn btn-num">5</button>
+      <button id="six" class="btn btn-num">6</button>
+      <button id="sub" class="btn btn-func">-</button>
+
+      <button id="one" class="btn btn-num">1</button>
+      <button id="two" class="btn btn-num">2</button>
+      <button id="three" class="btn btn-num">3</button>
+      <button id="mult" class="btn btn-func">x</button>
+      <button id="zero" class="btn btn-num">0</button>
+      <button id="equals" class="btn btn-func">=</button>
+
+      <button id="divide" class="btn  btn-func">/</button>
+
+      <!-- <button id="logMem" class="btn btn-func">L</button> -->
+
     </div>
-
     <script src="main2.js"></script>
 </body>
 
