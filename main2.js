@@ -56,6 +56,10 @@ class Events {
 
             const result = math.eval(expression);
             $output.value = result;
+            if (result === Infinity) {
+                setTimeout(document.getElementById('calc-container').classList += 'drop', 3000)
+            }
+            // $output.value = result;
         }
 
     }
